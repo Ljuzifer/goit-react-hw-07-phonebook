@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectTotalContacts } from 'redux/selectors';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
@@ -7,8 +7,7 @@ import { Message } from './Message/Message';
 import { GlobalStyle, Box } from './GlobalStyle';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
-  const contactsLength = contacts.length;
+  const contactsLength = useSelector(selectTotalContacts);
 
   return (
     <Box>

@@ -18,6 +18,12 @@ export const List = styled.ul`
     padding: 2px;
     padding-left: 8px;
     border-radius: 18px;
+    cursor: pointer;
+    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     span {
       font-size: 18px;
