@@ -33,7 +33,7 @@ export const ContactForm = () => {
     <Formik
       initialValues={{
         name: '',
-        number: '',
+        phone: '',
       }}
       validationSchema={formSchema}
       onSubmit={(values, actions) => {
@@ -48,7 +48,6 @@ export const ContactForm = () => {
           return;
         }
         dispatch(addContact({ id: nanoid(), ...values }));
-        // onAddContact({ id: nanoid(), ...values });
         actions.resetForm();
       }}
     >
