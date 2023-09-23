@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { searchFilter } from 'redux/filterSlice';
-// import { fetchContacts } from 'redux/operations';
-// import { searchFilter } from 'redux/actions';
 import { selectFilter } from 'redux/selectors';
 import { Search } from './Filter.styled';
 
@@ -12,8 +10,6 @@ export const Filter = () => {
   const onChangeFilter = newSymbol => {
     dispatch(searchFilter(newSymbol));
   };
-
-  // console.log(fetchContacts);
 
   return (
     <Search>

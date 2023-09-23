@@ -5,7 +5,7 @@ import { deleteContact } from 'redux/contactsSlice';
 
 export const ContactItem = ({ contact }) => {
   // const contacts = useSelector(getContacts);
-  const { id, name, number } = contact;
+  const { id, name, phone } = contact;
   const dispatch = useDispatch();
 
   const onContactDelete = () => dispatch(deleteContact(id));
@@ -15,7 +15,7 @@ export const ContactItem = ({ contact }) => {
       <HiMicrophone />
       <span>{name}</span>
       <div>
-        <span>{number} </span>
+        <span>{phone} </span>
         <button type="button" onClick={onContactDelete}>
           Delete
         </button>

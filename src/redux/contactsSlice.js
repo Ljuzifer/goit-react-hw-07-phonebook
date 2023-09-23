@@ -16,7 +16,6 @@ const handleFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.items = action.payload;
-  console.log(action.payload);
 };
 
 const handleRejected = (state, action) => {
