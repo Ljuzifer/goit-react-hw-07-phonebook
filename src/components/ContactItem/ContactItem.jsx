@@ -1,6 +1,7 @@
 import { HiMicrophone } from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+// import { deleteContact } from 'redux/contactsSlice';
+import { fetchDeleteContact } from 'redux/operations';
 // import { deleteContact } from 'redux/actions';
 
 export const ContactItem = ({ contact }) => {
@@ -8,7 +9,7 @@ export const ContactItem = ({ contact }) => {
   const { id, name, phone } = contact;
   const dispatch = useDispatch();
 
-  const onContactDelete = () => dispatch(deleteContact(id));
+  const onContactDelete = () => dispatch(fetchDeleteContact(id));
 
   return (
     <>

@@ -1,9 +1,8 @@
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { fetchAddContact } from 'redux/operations';
 import { FormThumb } from './ContactForm.styled';
 
 const formSchema = Yup.object().shape({
@@ -13,7 +12,7 @@ const formSchema = Yup.object().shape({
       'Wrong name format'
     )
     .required('Must be filled'),
-  number: Yup.string()
+  phone: Yup.string()
     .matches(
       /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
       'Wrong number format'
@@ -25,16 +24,11 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  // const onAddContact = newContact => {
-  //   dispatch(addContact(newContact));
-  // };
+  const initialValues = { name: '', phone: '' };
 
   return (
     <Formik
-      initialValues={{
-        name: '',
-        phone: '',
-      }}
+      initialValues={initialValues}
       validationSchema={formSchema}
       onSubmit={(values, actions) => {
         const enteredName = values.name;
@@ -47,7 +41,8 @@ export const ContactForm = () => {
           alert(`${enteredName} is already in contacts.`);
           return;
         }
-        dispatch(addContact({ id: nanoid(), ...values }));
+
+        dispatch(fetchAddContact({ ...values }));
         actions.resetForm();
       }}
     >
@@ -60,8 +55,8 @@ export const ContactForm = () => {
 
         <label>
           Number
-          <Field type="tel" name="number" placeholder="Enter number" />
-          <ErrorMessage name="number" component="b" />
+          <Field type="tel" name="phone" placeholder="Enter number" />
+          <ErrorMessage name="phone" component="b" />
         </label>
 
         <button type="submit">Add contact</button>

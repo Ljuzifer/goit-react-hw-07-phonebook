@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  width: 600px;
+  width: 666px;
   display: flex;
   flex-direction: column;
   gap: 13px;

@@ -8,6 +8,7 @@ import { GlobalStyle, Box } from './GlobalStyle';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { CountOfContacts } from './CountOfContacts/CountOfContacts';
+import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export const App = () => {
       )}
 
       <GlobalStyle />
+      <Toaster />
     </Box>
   );
 };
